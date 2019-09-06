@@ -24,6 +24,7 @@ Vue.component('test-component', require('./components/TestComponent.vue').defaul
 Vue.component('ajax-component', require('./components/AjaxComponent.vue').default);
 Vue.component('chartline-component', require('./components/ChartLineComponent.vue').default);
 Vue.component('randomchart-component', require('./components/ChartRandomComponent').default);
+Vue.component('socket-component', require('./components/SocketComponent').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

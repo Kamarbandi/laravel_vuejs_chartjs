@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Site;
 
+use App\Events\NewEvent;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -59,5 +60,31 @@ class HomeController extends Controller
                 ]
             )
         ];
+    }
+
+    public function newEvent(Request $request){
+
+
+        $result = [
+            'labels' => ['March', 'Aprel', 'Mai', 'Juni', 'Juli', 'August'],
+            'datasets' => array([
+                'label' => 'Sales',
+                'backgroundColor' => '#F26202',
+                'data' => [15000, 5000, 10000, 30000, 20000, 15000],
+            ])
+        ];
+
+        if($result->has('label')){
+            $result['labels'][] = $request->label;
+            $result['datasets'][0]['data'][]= (integer)$request->sale;
+
+            if($result->has('realtime')){
+                if(filter_var($request->input('realtime'), FILTER_VALIDATE_BOOLEAN)){
+                    event(new NewEvent($result));
+                }
+            }
+        }
+
+        return $result;
     }
 }
