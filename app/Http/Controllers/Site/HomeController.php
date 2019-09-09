@@ -28,6 +28,7 @@ class HomeController extends Controller
     }
 
 
+
     public function chartData(){
         return [
           'labels' => ['March', 'Aprel', 'Mai', 'Juni', 'Juli', 'August'],
